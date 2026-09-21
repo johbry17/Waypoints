@@ -184,9 +184,19 @@ function displayMultiplePhotos(photoSet, carouselId) {
 
   /* ---------- initialize ---------- */
 
-  // add panzoom to first image if applicable
+  // add panzoom to first image — after load, when it has dimensions — if applicable
   if (media[0].tagName === "IMG") {
-    requestAnimationFrame(() => attachPanzoom(media[0]));
+    const firstImage = media[0];
+
+    if (firstImage.complete) {
+      requestAnimationFrame(() => attachPanzoom(firstImage));
+    } else {
+      firstImage.addEventListener(
+        "load",
+        () => requestAnimationFrame(() => attachPanzoom(firstImage)),
+        { once: true },
+      );
+    }
   }
 
   // hide controls if only one photo/video in the set
