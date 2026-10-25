@@ -42,7 +42,7 @@ python scripts/extract_data.py --verbose
 
 ## Configuration
 
-`api_keys.json` must be present in the project root. It should contain a Google service-account key (for Sheets access) and optionally an OpenRouteService key (for driving/train routes):
+`scripts/api_keys.json` must be present. It should contain a Google service-account key (for Sheets access) and optionally an OpenRouteService key (for driving/train routes):
 
 ```json
 {
